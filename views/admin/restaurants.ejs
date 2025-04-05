@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Restaurants</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav class="admin-nav">
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/admin/restaurants" class="active">Restaurants</a>
+            <a href="/admin/tables">Tables</a>
+            <a href="/admin/categories">Categories</a>
+            <a href="/admin/inventory">Inventory</a>
+            <a href="/admin/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <h2>Manage Restaurants</h2>
+        
+        <% if (error) { %>
+            <div class="error-message"><%= error %></div>
+        <% } %>
+
+        <div class="add-form">
+            <h3>Add New Restaurant</h3>
+            <form action="/admin/restaurants" method="POST">
+                <div class="form-group">
+                    <label>Restaurant Name:</label>
+                    <input type="text" name="restaurant_name" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Address:</label>
+                    <textarea name="address" required class="form-input"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contact:</label>
+                    <input type="text" name="contact" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" name="password" required class="form-input">
+                </div>
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus"></i> Add Restaurant
+                </button>
+            </form>
+        </div>
+
+        <table class="admin-table restaurants-table" data-endpoint="restaurants">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% restaurants.forEach(restaurant => { %>
+                <tr data-id="<%= restaurant.restaurant_id %>">
+                    <td><%= restaurant.restaurant_id %></td>
+                    <td>
+                        <input type="text" class="inline-edit" name="restaurant_name" 
+                               value="<%= restaurant.restaurant_name %>" disabled>
+                    </td>
+                    <td>
+                        <textarea class="inline-edit" name="address" 
+                                  disabled><%= restaurant.address %></textarea>
+                    </td>
+                    <td>
+                        <input type="email" class="inline-edit" name="email" 
+                               value="<%= restaurant.email %>" disabled>
+                    </td>
+                    <td>
+                        <input type="text" class="inline-edit" name="contact" 
+                               value="<%= restaurant.contact %>" disabled>
+                    </td>
+                    <td class="actions">
+                        <button class="btn-edit edit-btn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-save save-btn" style="display:none;">
+                            <i class="fas fa-save"></i>
+                        </button>
+                        <button class="btn-delete delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

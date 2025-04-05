@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= restaurant.restaurant_name || 'Restaurant Display' %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/images/logo-icon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img src="/images/logo-1.png" alt="Restaurant Logo" class="logo">
+    <h1><%= restaurant.restaurant_name %></h1>
+    <a href="/admin/login" class="admin-icon">
+      <i class="fas fa-user-circle"></i>
+    </a>
+  </header>
+
+  <div class="table-number-card">
+    <div class="table-label">Your Table</div>
+    <div class="table-number-display"><%= tableNumber %></div>
+  </div>
+
+  <!-- Food Type Filters Scroll Bar - Comes FIRST -->
+  <div class="food-type-filters">
+    <div class="food-filter all active" data-filter="all">All Items</div>
+    <div class="food-filter veg" data-filter="veg">Veg</div>
+    <div class="food-filter non-veg" data-filter="non-veg">Non-Veg</div>
+    <div class="food-filter egg" data-filter="egg">Egg</div>
+  </div>
+
+  <!-- Categories Scroll Bar - Comes SECOND -->
+  <div class="categories-scroll" id="categoriesScroll">
+    <% categories.forEach(category => { %>
+      <div class="category-tab" 
+           data-category="<%= category.category_id %>">
+        <%= category.category_name %>
+      </div>
+    <% }); %>
+  </div>
+
+  <!-- Menu Items Container -->
+  <div class="menu-container">
+    <% categories.forEach(category => { %>
+      <section class="menu-section" 
+               id="category-<%= category.category_id %>">
+        <h3 class="category-title"><%= category.category_name %></h3>
+        <div class="menu-items">
+          <% inventory.filter(item => item.category_id == category.category_id).forEach(item => { %>
+            <div class="menu-item <%= item.is_veg.toLowerCase().replace(' ', '-') %> <%= item.is_out_of_stock ? 'out-of-stock' : '' %>" 
+                 data-category="<%= category.category_id %>">
+              <!-- Item Badge (Veg/Non-Veg/Egg) -->
+              <div class="item-badge <%= item.is_veg.toLowerCase().replace(' ', '-') %>"></div>
+              
+              <% if (item.is_out_of_stock) { %>
+                <div class="out-of-stock-overlay">
+                  <span>Out of Stock</span>
+                </div>
+              <% } %>
+              
+              <div class="item-content">
+                <div class="item-header">
+                  <h4><%= item.item_name %></h4>
+                  <span class="item-type <%= item.is_veg.toLowerCase().replace(' ', '-') %>">
+                    <%= item.is_veg %>
+                  </span>
+                </div>
+                
+                <p class="item-desc"><%= item.item_desc %></p>
+                
+                <div class="item-footer">
+                  <div class="item-price"><%= item.price.toFixed(2) %></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </section>
+    <% }); %>
+  </div>
+
+  <footer>
+    <p>Thank you for dining at <%= restaurant.restaurant_name %>!</p>
+  </footer>
+
+  <script src="/js/filters.js"></script>
+</body>
+</html>

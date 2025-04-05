@@ -1,0 +1,31 @@
+// colors.scss
+// First, import the sass:color module
+@use "sass:color";
+
+// Primary color palette
+$primary-color: #B22222;      // Firebrick red
+$secondary-color: #FDF5E6;    // Old Lace
+$text-color: #2C2C2C;         // Dark gray
+$accent-color: #8B0000;       // Dark red
+
+// Additional color variables
+$success-color: #228B22;      // Forest green
+$warning-color: #FF8C00;      // Dark orange
+$error-color: $primary-color; // Matching primary
+$info-color: #1E90FF;         // Dodger blue
+
+// Neutral tones
+$light-gray: #F5F5F5;
+$medium-gray: #CCCCCC;
+$dark-gray: #333333;
+
+// Utility colors
+$white: #FFFFFF;
+$black: #000000;
+
+// Semantic color mappings
+$background-color: $secondary-color;
+$header-color: $primary-color;
+$footer-color: $primary-color;
+$button-primary: $accent-color;
+$button-hover: color.adjust($accent-color, $lightness: 10%);

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Categories</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav class="admin-nav">
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/admin/restaurants">Manage Restaurants</a>
+            <a href="/admin/tables">Manage Tables</a>
+            <a href="/admin/categories" class="active">Manage Categories</a>
+            <a href="/admin/inventory">Manage Inventory</a>
+            <a href="/admin/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <h2>Manage Categories</h2>
+        
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <div class="add-form">
+            <h3>Add New Category</h3>
+            <form action="/admin/categories" method="POST">
+                <div class="form-group">
+                    <label>Category Name:</label>
+                    <input type="text" name="category_name" required class="form-input">
+                </div>
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus"></i> Add Category
+                </button>
+            </form>
+        </div>
+
+        <table class="admin-table categories-table" data-endpoint="categories">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach(category => { %>
+                <tr data-id="<%= category.category_id %>">
+                    <td><%= category.category_id %></td>
+                    <td>
+                        <input type="text" class="inline-edit" name="category_name" 
+                               value="<%= category.category_name %>" disabled>
+                    </td>
+                    <td class="actions">
+                        <button class="btn-edit edit-btn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-save save-btn" style="display:none;">
+                            <i class="fas fa-save"></i>
+                        </button>
+                        <button class="btn-delete delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tables</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav class="admin-nav">
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/admin/restaurants">Manage Restaurants</a>
+            <a href="/admin/tables" class="active">Manage Tables</a>
+            <a href="/admin/categories">Manage Categories</a>
+            <a href="/admin/inventory">Manage Inventory</a>
+            <a href="/admin/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <h2>Manage Tables</h2>
+        
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <table class="admin-table tables-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Table Number</th>
+                    <th>Restaurant</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% tables.forEach(table => { %>
+                <tr data-id="<%= table.table_id %>">
+                    <td><%= table.table_id %></td>
+                    <td><%= table.table_number %></td>
+                    <td>
+                        <% const restaurant = restaurants.find(r => r.restaurant_id === table.restaurant_id) %>
+                        <%= restaurant ? restaurant.restaurant_name : 'N/A' %>
+                    </td>
+                    <td class="actions">
+                        <button class="btn-delete delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

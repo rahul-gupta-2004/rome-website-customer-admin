@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav class="admin-nav">
+            <a href="/admin/dashboard" class="active">Dashboard</a>
+            <a href="/admin/restaurants">Restaurants</a>
+            <a href="/admin/tables">Tables</a>
+            <a href="/admin/categories">Categories</a>
+            <a href="/admin/inventory">Inventory</a>
+            <a href="/admin/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <h2>Dashboard</h2>
+        
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Restaurants</h3>
+                    <p class="stat-value"><%= stats.restaurants %></p>
+                    <a href="/admin/restaurants" class="stat-link">View All</a>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chair"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Tables</h3>
+                    <p class="stat-value"><%= stats.tables %></p>
+                    <a href="/admin/tables" class="stat-link">View All</a>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Categories</h3>
+                    <p class="stat-value"><%= stats.categories %></p>
+                    <a href="/admin/categories" class="stat-link">View All</a>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-hamburger"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Menu Items</h3>
+                    <p class="stat-value"><%= stats.inventory %></p>
+                    <a href="/admin/inventory" class="stat-link">View All</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h3>Restaurant Locations</h3>
+            <div id="restaurant-map"></div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

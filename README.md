@@ -1,5 +1,7 @@
 This project is a web-based ordering system called R.O.M.E. (Restaurants Orders Made Easy). It allows restaurants to manage their menu, categories, tables, and orders efficiently, while giving customers a smooth digital ordering experience by simply scanning a QR code at their table.
 
+
+
 **Customer Side (Website)**
 
 Customers do not need to sign up or log in. They simply scan a QR code placed on their table. This QR code contains a unique table and restaurant ID, which automatically redirects them to the correct menu page. The menu is loaded using live data from Supabase, which stores the restaurant's inventory and menu information.
@@ -9,6 +11,7 @@ The customer menu supports filtering options. Users can filter by food type, suc
 If a food item is out of stock, it will be clearly marked as “Out of Stock” visually. These items are shown in greyed-out style and disabled so they cannot be selected. This is achieved through EJS templating and JavaScript logic that checks the stock availability.
 
 The entire menu and interface is designed to be mobile-responsive, as the experience is optimized for customers scanning QR codes at their tables from their smartphones.
+
 
 **Admin Panel**
 
@@ -26,11 +29,13 @@ The Inventory section manages the menu items. Admins can view and edit food item
 
 The admin interface uses SCSS for styling to ensure clean and uniform visuals.
 
+
 **Cross-Browser Testing**
 
 To ensure consistent design and functionality across browsers, a Python script called cross_browser_testing.py was created. This script uses Selenium WebDriver to test the major EJS pages across two popular browsers: Google Chrome and Microsoft Edge.
 
 All important pages like the customer menu page, dashboard, restaurant list, inventory list, and others were tested. The script verifies that the layout remains consistent, all elements are visible, and features like form interactions and filters work properly across both browsers.
+
 
 **Deployment**
 
@@ -40,9 +45,11 @@ https://rome-website-customer-admin.onrender.com
 
 It is deployed as a **web service**, not a static site, because it uses a Node.js backend with EJS templating and dynamic routing.
 
+
 **Supabase Integration**
 
 All menu, table, and inventory data is stored and fetched using Supabase. It serves as the backend database, handling all CRUD operations for both the customer and admin sections.
+
 
 **Summary**
 

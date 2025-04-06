@@ -12,6 +12,7 @@ If a food item is out of stock, it will be clearly marked as “Out of Stock” 
 
 The entire menu and interface is designed to be mobile-responsive, as the experience is optimized for customers scanning QR codes at their tables from their smartphones.
 
+<br>
 
 **Admin Panel**
 
@@ -29,6 +30,7 @@ The Inventory section manages the menu items. Admins can view and edit food item
 
 The admin interface uses SCSS for styling to ensure clean and uniform visuals.
 
+<br>
 
 **Cross-Browser Testing**
 
@@ -36,6 +38,7 @@ To ensure consistent design and functionality across browsers, a Python script c
 
 All important pages like the customer menu page, dashboard, restaurant list, inventory list, and others were tested. The script verifies that the layout remains consistent, all elements are visible, and features like form interactions and filters work properly across both browsers.
 
+<br>
 
 **Deployment**
 
@@ -45,11 +48,13 @@ https://rome-website-customer-admin.onrender.com
 
 It is deployed as a **web service**, not a static site, because it uses a Node.js backend with EJS templating and dynamic routing.
 
+<br>
 
 **Supabase Integration**
 
 All menu, table, and inventory data is stored and fetched using Supabase. It serves as the backend database, handling all CRUD operations for both the customer and admin sections.
 
+<br>
 
 **Summary**
 

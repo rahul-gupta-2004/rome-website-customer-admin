@@ -1,6 +1,6 @@
 This project is a web-based ordering system called R.O.M.E. (Restaurants Orders Made Easy). It allows restaurants to manage their menu, categories, tables, and orders efficiently, while giving customers a smooth digital ordering experience by simply scanning a QR code at their table.
 
-
+<br>
 
 **Customer Side (Website)**
 

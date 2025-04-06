@@ -1,45 +1,49 @@
-This project is a web-based ordering system called **R.O.M.E. (Restaurants Orders Made Easy)**. It allows restaurants to manage their menu, categories, tables, and orders efficiently, while giving customers a smooth digital ordering experience by simply scanning a QR code at their table.
+This project is a web-based ordering system called R.O.M.E. (Restaurants Orders Made Easy). It allows restaurants to manage their menu, categories, tables, and orders efficiently, while giving customers a smooth digital ordering experience by simply scanning a QR code at their table.
 
-### Customer Side (Website)
+**Customer Side (Website)**
 
-Customers don’t need to sign up or log in. They simply scan a QR code on their table, which redirects them to the menu for that specific table and restaurant. The menu is displayed using data fetched from Supabase, which contains the inventory of food items linked with their restaurant.
+Customers do not need to sign up or log in. They simply scan a QR code placed on their table. This QR code contains a unique table and restaurant ID, which automatically redirects them to the correct menu page. The menu is loaded using live data from Supabase, which stores the restaurant's inventory and menu information.
 
-The customer menu interface supports **filtering**:
-- By **food type** (Veg, Non-Veg, Egg)
-- By **category** (like Beverages, Starters, etc.)
+The customer menu supports filtering options. Users can filter by food type, such as veg, non-veg, or egg-based items. They can also filter by menu categories like beverages, starters, desserts, etc. The filtering works using client-side JavaScript for fast performance.
 
-If any item is out of stock, it is clearly marked as “Out of Stock” in both the design and the functionality. This is done through a combination of EJS templating and JavaScript. Out-of-stock items appear grayed out with a label to prevent customers from selecting them.
+If a food item is out of stock, it will be clearly marked as “Out of Stock” visually. These items are shown in greyed-out style and disabled so they cannot be selected. This is achieved through EJS templating and JavaScript logic that checks the stock availability.
 
-The layout is responsive, and all filtering is done on the client side using JavaScript.
+The entire menu and interface is designed to be mobile-responsive, as the experience is optimized for customers scanning QR codes at their tables from their smartphones.
 
----
+**Admin Panel**
 
-### Admin Panel
+The admin side of the project is only accessible to authorized users with admin credentials. The admin interface contains several panels for managing different aspects of the platform.
 
-The admin section is only accessible to users with admin access. Admins can manage the core aspects of the system through the following panels:
+The dashboard uses Leaflet.js to display a live map with the locations of all registered restaurants. This makes it easy for the admin to view the geographical distribution of active restaurants.
 
-- **Dashboard**: Displays a Leaflet.js-based interactive map showing the location of all registered restaurants. This helps in quickly visualizing the geographical distribution.
-  
-- **Restaurants**: A list of all restaurants in the system. Admins can add, edit, or remove restaurant entries.
-  
-- **Tables**: Shows the tables linked to each restaurant. Each table has a QR code attached to it which is used by customers to access their menu.
-  
-- **Categories**: Categories of menu items such as Starters, Main Course, Desserts, etc., are managed here.
-  
-- **Inventory**: This section manages all menu items. Each item includes details such as name, description, price, type (veg/non-veg/egg), and stock status.
+The Restaurants panel lists all restaurants in the system. The admin can add, update, or delete restaurant information.
 
-Admin pages use inline editing through `admin.js` for a smoother experience, and the admin interface is also designed to be clean and functional using custom styles from SCSS.
+The Tables panel displays all the tables within each restaurant. Each table has a unique QR code, which customers scan to view their menu. These QR codes are automatically generated and stored for printing.
 
----
+The Categories section manages different menu sections such as starters, main course, desserts, and more.
 
-### Cross-Browser Testing
+The Inventory section manages the menu items. Admins can view and edit food items with details like name, description, price, type (veg/non-veg/egg), and stock status. Inline editing is supported using a custom JavaScript file called admin.js, making updates quick and seamless.
 
-A Python script named `cross_browser_testing.py` was created to ensure that all the EJS-based pages work consistently across different browsers. This script uses **Selenium WebDriver** to automatically open and test each page using two major browsers:
-- **Google Chrome**
-- **Microsoft Edge**
+The admin interface uses SCSS for styling to ensure clean and uniform visuals.
 
-All major customer and admin-facing pages (like `index.ejs`, `dashboard.ejs`, `inventory.ejs`, `tables.ejs`, and others) were tested. The script checks for visual layout consistency, element visibility, and that all core functionalities like filtering, form submissions, and interactivity work as expected across both browsers.
+**Cross-Browser Testing**
 
----
+To ensure consistent design and functionality across browsers, a Python script called cross_browser_testing.py was created. This script uses Selenium WebDriver to test the major EJS pages across two popular browsers: Google Chrome and Microsoft Edge.
 
-This project is meant to provide a complete end-to-end restaurant ordering solution that is scalable, user-friendly, and easy to manage for both customers and restaurant owners.
+All important pages like the customer menu page, dashboard, restaurant list, inventory list, and others were tested. The script verifies that the layout remains consistent, all elements are visible, and features like form interactions and filters work properly across both browsers.
+
+**Deployment**
+
+The live version of this project is hosted on Render. The deployed website can be accessed at:
+
+https://rome-website-customer-admin.onrender.com
+
+It is deployed as a **web service**, not a static site, because it uses a Node.js backend with EJS templating and dynamic routing.
+
+**Supabase Integration**
+
+All menu, table, and inventory data is stored and fetched using Supabase. It serves as the backend database, handling all CRUD operations for both the customer and admin sections.
+
+**Summary**
+
+R.O.M.E. provides a seamless digital ordering experience by combining QR code-based access for customers with a powerful admin panel for restaurant management. It is responsive, dynamic, and tested for performance and consistency across browsers, making it a complete solution for modern digital dining.

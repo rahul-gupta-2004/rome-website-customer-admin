@@ -1,9 +1,7 @@
 @use "colors" as *;
 @use "sass:color";
 
-/* ======================
-   BASE STYLES
-   ====================== */
+/* BASE STYLES */
 * {
   margin: 0;
   padding: 0;
@@ -19,9 +17,7 @@ body {
   flex-direction: column;
 }
 
-/* ======================
-   HEADER
-   ====================== */
+/* HEADER */
 header {
   background-color: $primary-color;
   color: white;
@@ -42,9 +38,7 @@ header {
   }
 }
 
-/* ======================
-   FILTER BARS
-   ====================== */
+/* FILTER BARS */
 .food-type-filters,
 .categories-scroll {
   display: flex;
@@ -67,9 +61,7 @@ header {
   border-top: 1px solid $light-gray;
 }
 
-/* ======================
-   FILTER TABS
-   ====================== */
+/* FILTER TABS */
 .category-tab,
 .food-filter {
   padding: 0.7rem 2rem;
@@ -123,9 +115,7 @@ header {
   background: #ffa500;
 }
 
-/* ======================
-   TABLE DISPLAY
-   ====================== */
+/* TABLE DISPLAY */
 .table-number-card {
   text-align: center;
   padding: 2rem;
@@ -191,9 +181,7 @@ header {
   }
 }
 
-/* ======================
-   MENU STYLES
-   ====================== */
+/* MENU STYLES */
 .menu-container {
   padding: 1.5rem;
 }
@@ -335,9 +323,7 @@ header {
   }
 }
 
-/* ======================
-   FOOTER
-   ====================== */
+/* FOOTER */
 footer {
   background-color: $primary-color;
   color: white;
@@ -347,9 +333,7 @@ footer {
   margin-top: auto;
 }
 
-/* ======================
-   ERROR STYLES
-   ====================== */
+/* ERROR STYLES */
 .error-container {
   text-align: center;
   padding: 3rem;
@@ -376,8 +360,7 @@ footer {
     color: $accent-color;
     margin-bottom: 1.5rem;
   }
-
-  /* Add this for better error messages */
+   
   .error-message {
     color: $error-color;
     background: rgba($error-color, 0.1);
@@ -550,7 +533,7 @@ footer {
       background: $info-color;
 
       &:hover {
-        background: #1978b8; // Slightly darker shade of $info-color
+        background: #1978b8;
       }
     }
 
@@ -558,7 +541,7 @@ footer {
       background: $error-color;
 
       &:hover {
-        background: #9a1b1b; // Slightly darker shade of $error-color
+        background: #9a1b1b;
       }
     }
   }
@@ -572,17 +555,17 @@ footer {
 
   &.available {
     background: rgba($success-color, 0.2);
-    color: #1a5e1a; // Darker shade of $success-color
+    color: #1a5e1a;
   }
 
   &.occupied {
     background: rgba($warning-color, 0.2);
-    color: #cc7000; // Darker shade of $warning-color
+    color: #cc7000;
   }
 
   &.reserved {
     background: rgba($info-color, 0.2);
-    color: #1978b8; // Darker shade of $info-color
+    color: #1978b8;
   }
 }
 
@@ -602,7 +585,7 @@ footer {
     transition: all 0.3s ease;
 
     &:hover {
-      background: #9a1b1b; // Slightly darker shade of $primary-color
+      background: #9a1b1b;
       transform: translateY(-2px);
     }
   }
@@ -836,11 +819,7 @@ textarea.inline-edit {
   }
 }
 
-/* ======================
-   OUT OF STOCK
-   ====================== */
-/* Out of stock styles */
-/* Out of stock styles */
+/* OUT OF STOCK */
 .menu-item.out-of-stock {
   position: relative;
   filter: grayscale(100%);
